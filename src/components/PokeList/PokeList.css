@@ -1,0 +1,7 @@
+.PokeList {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    margin-top: 5rem;
+    padding: 0 1rem;
+}
