@@ -3,21 +3,20 @@ import { getPokemons } from "./api";
 import Searcher from "./components/Searcher/Searcher";
 import PokeList from "./components/PokeList/PokeList";
 import { Col } from "antd";
-import { Connect } from "react-redux";
+import { connect } from "react-redux";
 import { setPokemons as setPokemonsActions } from "./actions";
 import logo from "./statics/logo.svg";
 import "./App.css";
 import PokeCard from "./components/PokeCard/PokeCard";
-function App() {
-    const [pok, setPok] = useState([]);
+function App({ pokemons, setPokemons }) {
     useEffect(() => {
         const fetchPokemons = async () => {
             const pokes = await getPokemons();
-            setPok(pokes);
+            setPokemons(pokes);
         };
 
         fetchPokemons();
-    }, [setPok]);
+    }, []);
     return (
         <div className="App">
             <Col span={4} offset={10}>
@@ -27,7 +26,7 @@ function App() {
                 <Searcher />
             </Col>
             <PokeList>
-                {pok.map((p, i) => (
+                {pokemons.map((p, i) => (
                     <PokeCard poke={p} key={i} />
                 ))}
             </PokeList>
