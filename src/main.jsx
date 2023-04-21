@@ -9,8 +9,9 @@ import {
     legacy_createStore as createStore,
 } from "redux";
 import { logger } from "./middlewares/index";
+import thunk from "redux-thunk";
 
-const composedEnhancers = compose(applyMiddleware(logger));
+const composedEnhancers = compose(applyMiddleware(thunk, logger));
 const store = createStore(pokemonsReducer, composedEnhancers);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
