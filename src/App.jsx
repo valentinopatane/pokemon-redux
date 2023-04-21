@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPokemons } from "./api";
 import { getPokemonsWithDetails, setLoading } from "./actions";
 
-import Searcher from "./components/Searcher/Searcher";
 import PokeList from "./components/PokeList/PokeList";
 import PokeCard from "./components/PokeCard/PokeCard";
 
@@ -29,11 +28,8 @@ function App() {
     }, []);
     return (
         <div className="App">
-            <Col span={4} offset={10}>
+            <Col span={4} offset={10} style={{ marginBottom: "40px" }}>
                 <img src={logo} alt="pokedux"></img>
-            </Col>
-            <Col span={8} offset={8} style={{ marginBottom: "30px" }}>
-                <Searcher />
             </Col>
             {loading ? (
                 <Col offset={12}>
